@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
 
 import java.util.Objects;
@@ -18,7 +19,6 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
         if (nextCell.getTileName().equals(CellType.FLOOR.getTileName())
        && nextCell.getActor() == null) {
-            System.out.println(nextCell.getActor());
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;

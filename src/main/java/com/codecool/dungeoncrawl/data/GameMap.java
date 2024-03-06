@@ -20,7 +20,6 @@ public class GameMap {
     private final List<Spider> spiders = new ArrayList<>();
     private final List<Goblin> goblins = new ArrayList<>();
 
-
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
@@ -31,8 +30,6 @@ public class GameMap {
             }
         }
     }
-
-
 
     public Cell getCell(int x, int y) {
         return cells[x][y];
@@ -49,9 +46,11 @@ public class GameMap {
         for (Spider spider : spiders){
             spider.randomMove();
         }
+
+        for (Goblin goblin : goblins){
+            goblin.followPlayer(player.getCell());
+        }
     }
-
-
 
     public Player getPlayer() {
         return player;

@@ -3,8 +3,10 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Goblin;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.actors.Spider;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -37,6 +39,14 @@ public class MapLoader {
                         case 's':
                             cell.setType(CellType.FLOOR);
                             new Skeleton(cell);
+                            break;
+                        case '*':
+                            cell.setType(CellType.FLOOR);
+                            map.addSpider(new Spider(cell));
+                            break;
+                        case 'g':
+                            cell.setType(CellType.FLOOR);
+                            map.addGoblin(new Goblin(cell));
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);

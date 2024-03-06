@@ -11,8 +11,8 @@ public class Up implements KeyHandler {
     @Override
     public void perform(KeyEvent event, GameMap map, GraphicsContext context) {
         if(code.equals(event.getCode())) {
-            map.getPlayer().move(0, -1);
-            context.translate(0, +30);
+            if(map.getPlayer().move(0, -1))
+            context.translate(0, +32);
         }
     }
 }

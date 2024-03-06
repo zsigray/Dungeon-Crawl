@@ -37,7 +37,7 @@ public class Player extends Actor {
 
 
     @Override
-    protected boolean moveIsPossible(Cell nextCell) {
+    public boolean moveIsPossible(Cell nextCell) {
         return super.moveIsPossible(nextCell)
                 || this.hasKey() && nextCell.getType() == CellType.DOORCLOSED;
     }

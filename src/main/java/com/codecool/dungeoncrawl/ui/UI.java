@@ -1,8 +1,10 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.actors.Actor;
-import com.codecool.dungeoncrawl.data.actors.Spider;
+import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.Flower;
+import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
@@ -13,14 +15,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 public class UI {
     private Canvas canvas;
     private GraphicsContext context;
-
     private MainStage mainStage;
     private GameLogic logic;
     private Set<KeyHandler> keyHandlers;
@@ -48,8 +48,9 @@ public class UI {
 
     private void onKeyPressed(KeyEvent keyEvent) {
         for (KeyHandler keyHandler : keyHandlers) {
-            keyHandler.perform(keyEvent, logic.getMap());
+            keyHandler.perform(keyEvent, logic.getMap(), context);
         }
+
         refresh();
         logic.getMap().moveMonsters();
     }
@@ -61,7 +62,10 @@ public class UI {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
+                    handleItemPickUp(cell);
                     Tiles.drawTile(context, cell.getActor(), x, y);
+                } else if (cell.getItem() != null) {
+                    Tiles.drawTile(context, cell.getItem(), x, y);
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }
@@ -70,4 +74,17 @@ public class UI {
         mainStage.setHealthLabelText(logic.getPlayerHealth());
     }
 
+    private void handleItemPickUp(Cell cell) {
+        if (cell.getItem() != null && cell.getActor() instanceof Player) {
+            Drawable item = cell.getItem();
+            if (item.getClass() == Flower.class) {
+                logic.addFlowerToPlayer();
+                mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
+            } else if (item.getClass() == Key.class) {
+                logic.pickUpKey();
+                mainStage.setKeyValueText();
+            }
+            cell.setItem(null);
+        }
+    }
 }

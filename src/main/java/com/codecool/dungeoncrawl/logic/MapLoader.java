@@ -7,13 +7,16 @@ import com.codecool.dungeoncrawl.data.actors.Goblin;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.data.actors.Spider;
+import com.codecool.dungeoncrawl.data.items.Flower;
+import com.codecool.dungeoncrawl.data.items.FlowerType;
+import com.codecool.dungeoncrawl.data.items.Key;
 
 import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
     public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map.txt");
+        InputStream is = MapLoader.class.getResourceAsStream("/map2.txt");
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
@@ -51,6 +54,35 @@ public class MapLoader {
                         case '@':
                             cell.setType(CellType.FLOOR);
                             map.setPlayer(new Player(cell));
+                            break;
+                        case '1':
+                            cell.setType(CellType.FLOOR);
+                            new Flower(FlowerType.RED, cell);
+                            break;
+                        case '2':
+                            cell.setType(CellType.FLOOR);
+                            new Flower(FlowerType.BLUE, cell);
+                            break;
+                        case '3':
+                            cell.setType(CellType.FLOOR);
+                            new Flower(FlowerType.YELLOW, cell);
+                            break;
+                        case '4':
+                            cell.setType(CellType.FLOOR);
+                            new Flower(FlowerType.WHITE, cell);
+                            break;
+                        case 'k':
+                            cell.setType(CellType.FLOOR);
+                            new Key(cell);
+                            break;
+                        case '-':
+                            cell.setType(CellType.DOORCLOSED);
+                            break;
+                        case '+':
+                            cell.setType(CellType.DOOROPEN);
+                            break;
+                        case 't':
+                            cell.setType(CellType.TREE);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

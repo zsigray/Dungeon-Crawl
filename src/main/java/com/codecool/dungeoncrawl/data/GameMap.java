@@ -14,7 +14,6 @@ public class GameMap {
     private int width;
     private int height;
     private Cell[][] cells;
-
     private Player player;
 
     private final List<Spider> spiders = new ArrayList<>();

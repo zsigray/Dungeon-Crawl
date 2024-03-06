@@ -8,6 +8,7 @@ import java.util.List;
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
+    private Drawable item;
     private GameMap gameMap;
     private int x, y;
 
@@ -28,6 +29,9 @@ public class Cell implements Drawable {
 
     public void setActor(Actor actor) {
         this.actor = actor;
+    }
+    public void setItem(Drawable item) {
+        this.item = item;
     }
 
     public Actor getActor() {
@@ -61,4 +65,9 @@ public class Cell implements Drawable {
     public int getY() {
         return y;
     }
+
+    public Drawable getItem() {
+        return item;
+    }
+
 }

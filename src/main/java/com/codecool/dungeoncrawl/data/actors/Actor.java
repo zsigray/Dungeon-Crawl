@@ -1,7 +1,10 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
+
+import java.util.Objects;
 
 public abstract class Actor implements Drawable {
     protected Cell cell;
@@ -14,9 +17,17 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        cell.setActor(null);
-        nextCell.setActor(this);
-        cell = nextCell;
+        if (moveIsPossible(nextCell)) {
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
+    }
+
+    protected boolean moveIsPossible(Cell nextCell) {
+        return nextCell.getTileName().equals(CellType.FLOOR.getTileName())
+                && nextCell.getActor() == null
+                || nextCell.getTileName().equals("openedDoor");
     }
 
     public int getHealth() {

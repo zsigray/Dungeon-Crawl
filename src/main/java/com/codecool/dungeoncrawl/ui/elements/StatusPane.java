@@ -11,11 +11,17 @@ public class StatusPane {
     private GridPane ui;
     private Label healthTextLabel;
     private Label healthValueLabel;
+    private Label flowerTextLabel;
+    private Label flowerValueLabel;
+    private Label keyTextLabel;
 
     public StatusPane() {
         ui = new GridPane();
-        healthTextLabel = new Label("Health: ");
+        healthTextLabel = new Label("❤️: ");
         healthValueLabel = new Label();
+        flowerTextLabel = new Label("🌷: ");
+        flowerValueLabel = new Label();
+        keyTextLabel = new Label();
     }
 
     public BorderPane build() {
@@ -25,6 +31,9 @@ public class StatusPane {
 
         ui.add(healthTextLabel, 0, 0);
         ui.add(healthValueLabel, 1, 0);
+        ui.add(flowerTextLabel, 0, 1);
+        ui.add(flowerValueLabel, 1, 1);
+        ui.add(keyTextLabel, 0, 2);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -33,5 +42,12 @@ public class StatusPane {
 
     public void setHealthValue(String text) {
         healthValueLabel.setText(text);
+    }
+    public void setFlowerValue(String text) {
+        this.flowerValueLabel.setText(text);
+    }
+
+    public void keyTextLabel() {
+        this.keyTextLabel.setText("🗝");
     }
 }

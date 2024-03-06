@@ -12,7 +12,7 @@ public class Up implements KeyHandler {
     public void perform(KeyEvent event, GameMap map, GraphicsContext context) {
         if(code.equals(event.getCode())) {
             map.getPlayer().move(0, -1);
-            //context.translate(0, +30);
+            context.translate(0, +30);
         }
     }
 }

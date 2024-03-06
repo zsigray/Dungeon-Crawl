@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Random;
 import java.util.Set;
 
 public class UI {
@@ -23,6 +24,8 @@ public class UI {
     private MainStage mainStage;
     private GameLogic logic;
     private Set<KeyHandler> keyHandlers;
+
+    private Random random;
 
 
     public UI(GameLogic logic, Set<KeyHandler> keyHandlers) {
@@ -49,6 +52,7 @@ public class UI {
         }
 
         refresh();
+        logic.getMap().moveMonsters();
     }
 
     public void refresh() {

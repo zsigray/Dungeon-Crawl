@@ -17,13 +17,18 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getTileName().equals(CellType.FLOOR.getTileName())
-       && nextCell.getActor() == null) {
+        if (moveIsPossible(nextCell)) {
             System.out.println(nextCell.getActor());
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
         }
+    }
+
+    private static boolean moveIsPossible(Cell nextCell) {
+        return nextCell.getTileName().equals(CellType.FLOOR.getTileName())
+                && nextCell.getActor() == null
+                || nextCell.getTileName().equals("openedDoor");
     }
 
     public int getHealth() {

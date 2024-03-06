@@ -1,6 +1,10 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.Flower;
+import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
@@ -54,7 +58,7 @@ public class UI {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
-                    cell.setItem(null);
+                    handleItemPickUp(cell);
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);
@@ -64,5 +68,17 @@ public class UI {
             }
         }
         mainStage.setHealthLabelText(logic.getPlayerHealth());
+    }
+
+    private void handleItemPickUp(Cell cell) {
+        if (cell.getItem() != null && cell.getActor() instanceof Player) {
+            Drawable item = cell.getItem();
+            if (item.getClass() == Flower.class) {
+                ((Player) cell.getActor()).addFlower();
+            }else if (item.getClass() == Key.class) {
+                ((Player) cell.getActor()).pickUpKey();
+            }
+            cell.setItem(null);
+        }
     }
 }

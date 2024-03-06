@@ -20,7 +20,6 @@ import java.util.Set;
 public class UI {
     private Canvas canvas;
     private GraphicsContext context;
-
     private MainStage mainStage;
     private GameLogic logic;
     private Set<KeyHandler> keyHandlers;
@@ -74,9 +73,11 @@ public class UI {
         if (cell.getItem() != null && cell.getActor() instanceof Player) {
             Drawable item = cell.getItem();
             if (item.getClass() == Flower.class) {
-                ((Player) cell.getActor()).addFlower();
-            }else if (item.getClass() == Key.class) {
-                ((Player) cell.getActor()).pickUpKey();
+                logic.addFlowerToPlayer();
+                mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
+            } else if (item.getClass() == Key.class) {
+                logic.pickUpKey();
+                mainStage.setKeyValueText();
             }
             cell.setItem(null);
         }

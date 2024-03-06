@@ -48,6 +48,6 @@ public class GameLogic {
     }
 
     public boolean getKeyFromPlayer() {
-        return map.getPlayer().getKey();
+        return map.getPlayer().hasKey();
     }
 }

@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.Flower;
@@ -63,6 +64,10 @@ public class UI {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
                     handleItemPickUp(cell);
+                    if(cell.getType() == CellType.DOORCLOSED &&
+                    cell.getActor() instanceof Player){
+                        cell.setType(CellType.DOOROPEN);
+                    }
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);

@@ -31,18 +31,16 @@ public class Player extends Actor {
         this.key = true;
     }
 
-    public boolean getKey() {
+    public boolean hasKey() {
         return key;
     }
 
 
     @Override
-    protected boolean moveIsPossible(Cell nextCell) {
+    public boolean moveIsPossible(Cell nextCell) {
         return super.moveIsPossible(nextCell)
                 || this.hasKey() && nextCell.getType() == CellType.DOORCLOSED;
     }
 
-    public boolean hasKey (){
-        return false;
-    }
+
 }

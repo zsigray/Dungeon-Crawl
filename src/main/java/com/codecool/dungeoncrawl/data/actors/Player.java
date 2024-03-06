@@ -31,7 +31,7 @@ public class Player extends Actor {
         this.key = true;
     }
 
-    public boolean getKey() {
+    public boolean hasKey() {
         return key;
     }
 
@@ -42,7 +42,5 @@ public class Player extends Actor {
                 || this.hasKey() && nextCell.getType() == CellType.DOORCLOSED;
     }
 
-    public boolean hasKey (){
-        return false;
-    }
+
 }

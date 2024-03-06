@@ -10,7 +10,9 @@ public class Right implements KeyHandler {
 
     @Override
     public void perform(KeyEvent event, GameMap map, GraphicsContext context) {
-        if(code.equals(event.getCode()))
-        map.getPlayer().move(1, 0);
+        if(code.equals(event.getCode())) {
+            map.getPlayer().move(1, 0);
+            context.translate(-30, +0);
+        }
     }
 }

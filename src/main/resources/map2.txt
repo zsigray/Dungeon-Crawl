@@ -1,4 +1,4 @@
-56 22
+40 20
 tttttttttttttt
 t#############     ttttttttttt
 t#...........#ttttt###########tttttttttttttttttttttt

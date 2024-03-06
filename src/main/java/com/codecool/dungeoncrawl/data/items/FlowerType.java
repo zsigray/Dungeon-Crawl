@@ -1,4 +1,4 @@
-package com.codecool.dungeoncrawl.data.item;
+package com.codecool.dungeoncrawl.data.items;
 
 public enum FlowerType {
     BLUE("flower1"),

@@ -29,4 +29,12 @@ public class MainStage {
     public void setHealthLabelText(String text) {
         this.statusPane.setHealthValue(text);
     }
+
+    public void setFlowerValueText(int number) {
+        this.statusPane.setFlowerValue(String.valueOf(number));
+    }
+
+    public void setKeyValueText() {
+        this.statusPane.keyTextLabel();
+    }
 }

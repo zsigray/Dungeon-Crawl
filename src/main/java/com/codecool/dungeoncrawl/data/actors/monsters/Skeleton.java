@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 public class Skeleton extends Actor implements Monster {
 
     private boolean flower = false;
+    private String tileName = "skeleton";
 
     public Skeleton(Cell cell) {
         super(cell);
@@ -13,7 +14,7 @@ public class Skeleton extends Actor implements Monster {
 
     @Override
     public String getTileName() {
-        return "skeleton";
+        return tileName;
     }
 
     @Override
@@ -24,5 +25,6 @@ public class Skeleton extends Actor implements Monster {
     @Override
     public void giveFlower(boolean flower) {
         this.flower = flower;
+        this.tileName = "fairy1";
     }
 }

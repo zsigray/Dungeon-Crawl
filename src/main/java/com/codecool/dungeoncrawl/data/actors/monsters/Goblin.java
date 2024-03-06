@@ -8,6 +8,7 @@ import java.util.List;
 public class Goblin extends Actor implements Monster {
 
     private boolean flower = false;
+    private String tileName = "goblin";
 
     public Goblin(Cell cell) {
         super(cell);
@@ -15,7 +16,7 @@ public class Goblin extends Actor implements Monster {
 
     @Override
     public String getTileName() {
-        return "goblin";
+        return tileName;
     }
 
     public void followPlayer(Cell targetCell) {
@@ -57,6 +58,7 @@ public class Goblin extends Actor implements Monster {
     @Override
     public void giveFlower(boolean flower) {
         this.flower = flower;
+        this.tileName = "fairy3";
     }
 
 }

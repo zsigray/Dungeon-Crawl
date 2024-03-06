@@ -9,6 +9,7 @@ import java.util.Random;
 public class Spider extends Actor implements Monster {
 
     private boolean flower = false;
+    private String tileName = "spider";
 
     public Spider(Cell cell) {
         super(cell);
@@ -16,7 +17,7 @@ public class Spider extends Actor implements Monster {
 
     @Override
     public String getTileName() {
-        return "spider";
+        return tileName;
     }
 
     public void randomMove(){
@@ -34,6 +35,7 @@ public class Spider extends Actor implements Monster {
     @Override
     public void giveFlower(boolean flower) {
         this.flower = flower;
+        this.tileName = "fairy2";
     }
 
 }

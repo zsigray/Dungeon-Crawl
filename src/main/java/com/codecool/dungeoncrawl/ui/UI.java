@@ -62,7 +62,10 @@ public class UI {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
-                    handleItemPickUp(cell);
+                    if (cell.getActor() instanceof Player) {
+                        handleItemPickUp(cell);
+                        logic.handleCombat(cell);
+                    }
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
                     Tiles.drawTile(context, cell.getItem(), x, y);
@@ -75,7 +78,7 @@ public class UI {
     }
 
     private void handleItemPickUp(Cell cell) {
-        if (cell.getItem() != null && cell.getActor() instanceof Player) {
+        if (cell.getItem() != null) {
             Drawable item = cell.getItem();
             if (item.getClass() == Flower.class) {
                 logic.addFlowerToPlayer();

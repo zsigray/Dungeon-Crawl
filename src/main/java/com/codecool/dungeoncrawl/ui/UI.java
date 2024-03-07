@@ -63,10 +63,12 @@ public class UI {
             for (int y = 0; y < logic.getMapHeight(); y++) {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
-                    handleItemPickUp(cell);
-                    if(cell.getType() == CellType.DOORCLOSED &&
-                    cell.getActor() instanceof Player){
-                        cell.setType(CellType.DOOROPEN);
+                    if (cell.getActor() instanceof Player) {
+                        handleItemPickUp(cell);
+                        logic.handleCombat(cell);
+                        if(cell.getType() == CellType.DOORCLOSED){
+                            cell.setType(CellType.DOOROPEN);
+                        }
                     }
                     Tiles.drawTile(context, cell.getActor(), x, y);
                 } else if (cell.getItem() != null) {
@@ -77,14 +79,14 @@ public class UI {
             }
         }
         mainStage.setHealthLabelText(logic.getPlayerHealth());
+        mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
     }
 
     private void handleItemPickUp(Cell cell) {
-        if (cell.getItem() != null && cell.getActor() instanceof Player) {
+        if (cell.getItem() != null) {
             Drawable item = cell.getItem();
             if (item.getClass() == Flower.class) {
                 logic.addFlowerToPlayer();
-                mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
             } else if (item.getClass() == Key.class) {
                 logic.pickUpKey();
                 mainStage.setKeyValueText();

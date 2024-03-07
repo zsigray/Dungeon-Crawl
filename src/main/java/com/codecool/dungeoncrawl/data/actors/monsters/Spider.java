@@ -33,8 +33,8 @@ public class Spider extends Actor implements Monster {
     }
 
     @Override
-    public void giveFlower(boolean flower) {
-        this.flower = flower;
+    public void giveFlowerAndTransform() {
+        this.flower = true;
         this.tileName = "fairy2";
     }
 

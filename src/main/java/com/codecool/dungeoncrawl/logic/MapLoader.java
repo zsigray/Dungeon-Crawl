@@ -33,6 +33,12 @@ public class MapLoader {
                         case ' ':
                             cell.setType(CellType.EMPTY);
                             break;
+                        case 'b':
+                            cell.setType(CellType.BRIDGE);
+                            break;
+                        case 'r':
+                            cell.setType(CellType.RIVER);
+                            break;
                         case '#':
                             cell.setType(CellType.WALL);
                             break;

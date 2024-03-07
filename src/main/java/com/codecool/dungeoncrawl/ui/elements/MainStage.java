@@ -37,4 +37,8 @@ public class MainStage {
     public void setKeyValueText() {
         this.statusPane.keyTextLabel();
     }
+
+    public void setScene(Scene scene){
+        this.scene = scene;
+    }
 }

@@ -9,7 +9,6 @@ import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -21,8 +20,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Alert.AlertType;
 
 import java.util.Objects;
 import java.util.Random;
@@ -78,7 +75,6 @@ public class UI {
             // add button and label
             r.getChildren().add(d);
             r.getChildren().add(l);
-            System.out.println(td.getEditor().getText());
             if (Objects.equals(td.getEditor().getText(), "Sara"
                     ) || Objects.equals(td.getEditor().getText(), "Zsofi"
             )  || Objects.equals(td.getEditor().getText(), "Balazs"
@@ -86,16 +82,15 @@ public class UI {
                 logic.getMap().getPlayer().setFly();
             }
 
-            System.out.println(logic.getMap().getPlayer().canFly());
             Scene sc = new Scene(r, 500, 300);
             mainStage.setScene(sc);
         }
 
         for (KeyHandler keyHandler : keyHandlers) {
             keyHandler.perform(keyEvent, logic.getMap(), context);
-            refresh();
-            logic.getMap().moveMonsters();
         }
+        refresh();
+        logic.getMap().moveMonsters();
     }
 
     public void refresh() {

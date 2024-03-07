@@ -12,10 +12,16 @@ import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
@@ -48,10 +54,41 @@ public class UI {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.K) {
+            TilePane r = new TilePane();
+            System.out.println("hi");
+            // create a label to show the input in text dialog
+            Label l = new Label("no text input");
+
+            // create a text input dialog
+            TextInputDialog td = new TextInputDialog();
+
+            // create a button
+            Button d = new Button("click");
+
+            // create a event handler
+            td.showAndWait();
+
+            // set the text of the label
+            l.setText(td.getEditor().getText());
+
+            // add button and label
+            r.getChildren().add(d);
+            r.getChildren().add(l);
+            if (Objects.equals(td.getEditor().getText(), "Sara"
+                    ) || Objects.equals(td.getEditor().getText(), "Zsofi"
+            )  || Objects.equals(td.getEditor().getText(), "Balazs"
+            )) {
+                logic.getMap().getPlayer().setFly();
+            }
+
+            Scene sc = new Scene(r, 500, 300);
+            mainStage.setScene(sc);
+        }
+
         for (KeyHandler keyHandler : keyHandlers) {
             keyHandler.perform(keyEvent, logic.getMap(), context);
         }
-
         refresh();
         logic.getMap().moveMonsters();
     }
@@ -70,16 +107,17 @@ public class UI {
                             cell.setType(CellType.DOOROPEN);
                         }
                     }
-                    Tiles.drawTile(context, cell.getActor(), x, y);
+                    Tiles.drawTile(context, cell.getActor(), x, y, 1.5);
                 } else if (cell.getItem() != null) {
-                    Tiles.drawTile(context, cell.getItem(), x, y);
+                    Tiles.drawTile(context, cell.getItem(), x, y, 1.5);
                 } else {
-                    Tiles.drawTile(context, cell, x, y);
+                    Tiles.drawTile(context, cell, x, y, 1.5);
                 }
             }
         }
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
+
     }
 
     private void handleItemPickUp(Cell cell) {

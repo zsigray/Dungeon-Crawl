@@ -8,6 +8,7 @@ public class Player extends Actor {
 
     private int flowers = 0;
     private boolean key = false;
+    private boolean canFly = false;
 
     public Player(Cell cell) {
         super(cell);
@@ -40,10 +41,19 @@ public class Player extends Actor {
         return key;
     }
 
+    public boolean canFly(){
+        return this.canFly;
+    }
+
+    public void setFly(){
+        this.canFly = true;
+    }
+
     @Override
     public boolean moveIsPossible(Cell nextCell) {
         return super.moveIsPossible(nextCell)
-                || this.hasKey() && nextCell.getType() == CellType.DOORCLOSED;
+                || this.hasKey() && nextCell.getType() == CellType.DOORCLOSED ||
+                this.canFly;
     }
 
 

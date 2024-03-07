@@ -25,8 +25,5 @@ public class Game extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
-/*        primaryStage.setX(100);
-        primaryStage.setY(100);*/
-        primaryStage.setFullScreen(true);
     }
 }

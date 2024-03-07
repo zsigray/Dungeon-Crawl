@@ -2,8 +2,11 @@ package com.codecool.dungeoncrawl.ui.elements;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.*;
 
 public class StatusPane {
     public static final int RIGHT_PANEL_WIDTH = 200;
@@ -14,6 +17,7 @@ public class StatusPane {
     private Label flowerTextLabel;
     private Label flowerValueLabel;
     private Label keyTextLabel;
+    private TextField textField;
 
     public StatusPane() {
         ui = new GridPane();
@@ -22,6 +26,7 @@ public class StatusPane {
         flowerTextLabel = new Label("🌷: ");
         flowerValueLabel = new Label();
         keyTextLabel = new Label();
+        textField = new TextField();
     }
 
     public BorderPane build() {
@@ -34,6 +39,7 @@ public class StatusPane {
         ui.add(flowerTextLabel, 0, 1);
         ui.add(flowerValueLabel, 1, 1);
         ui.add(keyTextLabel, 0, 2);
+        //ui.add(textField, 0, 3);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -50,4 +56,5 @@ public class StatusPane {
     public void keyTextLabel() {
         this.keyTextLabel.setText("🗝");
     }
+
 }

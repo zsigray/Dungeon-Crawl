@@ -3,9 +3,7 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
-import javafx.scene.canvas.GraphicsContext;
 
-import java.util.Objects;
 
 public abstract class Actor implements Drawable {
     protected Cell cell;
@@ -31,7 +29,8 @@ public abstract class Actor implements Drawable {
         return (nextCell.getTileName().equals(CellType.FLOOR.getTileName()) ||
                 nextCell.getTileName().equals(CellType.BRIDGE.getTileName()))
                 && nextCell.getActor() == null
-                || nextCell.getTileName().equals("openedDoor");
+                || nextCell.getTileName().equals("openedDoor")
+                ;
     }
 
     public int getHealth() {

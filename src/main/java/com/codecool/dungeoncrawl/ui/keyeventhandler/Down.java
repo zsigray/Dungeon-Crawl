@@ -1,6 +1,5 @@
 package com.codecool.dungeoncrawl.ui.keyeventhandler;
 
-import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.ui.Tiles;
 import javafx.scene.canvas.GraphicsContext;

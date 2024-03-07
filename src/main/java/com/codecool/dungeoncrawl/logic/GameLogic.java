@@ -52,13 +52,13 @@ public class GameLogic {
             if (neighborCell.getActor() != null) {
                 Actor neighborActor = neighborCell.getActor();
                 Monster monster = (Monster) neighborActor;
-                int flowerNumber = ((Player) playerCell.getActor()).getFlowers();
-
+                Player player = map.getPlayer();
+                int flowerNumber = player.getFlowers();
                 if (flowerNumber <= 0 && !monster.hasFlower()) {
-                    map.getPlayer().takeDamage(2);
+                    player.takeDamage(2);
                 } else if (flowerNumber > 0 && !monster.hasFlower()) {
                     monster.giveFlowerAndTransform();
-                    map.getPlayer().removeFlower();
+                    player.removeFlower();
                 }
             }
         }

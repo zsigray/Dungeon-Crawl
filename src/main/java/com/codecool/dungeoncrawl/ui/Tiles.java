@@ -31,7 +31,7 @@ public class Tiles {
         tileMap.put("skeleton", new Tile(29, 6));
         tileMap.put("spider", new Tile(28, 5));
         tileMap.put("goblin", new Tile(29, 2));
-        tileMap.put("flower1", new Tile(27, 25));
+        tileMap.put("flower1", new Tile(31, 25));
         tileMap.put("flower2", new Tile(28, 25));
         tileMap.put("flower3", new Tile(29, 25));
         tileMap.put("flower4", new Tile(31, 25));
@@ -45,9 +45,13 @@ public class Tiles {
         tileMap.put("river", new Tile(8, 5));
     }
 
-    public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
+    public static void drawTile(GraphicsContext context, Drawable d, int x, int y, double zoomLevel) {
         Tile tile = tileMap.get(d.getTileName());
+        double scaledTileWidth = TILE_WIDTH * zoomLevel;
+        double scaledTileHeight = TILE_WIDTH * zoomLevel;
+        double scaledX = x * TILE_WIDTH * zoomLevel;
+        double scaledY = y * TILE_WIDTH * zoomLevel;
         context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
-                x * TILE_WIDTH, y * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
+                scaledX, scaledY, scaledTileWidth, scaledTileHeight);
     }
 }

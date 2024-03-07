@@ -9,13 +9,22 @@ import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert.AlertType;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
@@ -48,12 +57,45 @@ public class UI {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
-        for (KeyHandler keyHandler : keyHandlers) {
-            keyHandler.perform(keyEvent, logic.getMap(), context);
+        if (keyEvent.getCode() == KeyCode.K) {
+            TilePane r = new TilePane();
+            System.out.println("hi");
+            // create a label to show the input in text dialog
+            Label l = new Label("no text input");
+
+            // create a text input dialog
+            TextInputDialog td = new TextInputDialog();
+
+            // create a button
+            Button d = new Button("click");
+
+            // create a event handler
+            td.showAndWait();
+
+            // set the text of the label
+            l.setText(td.getEditor().getText());
+
+            // add button and label
+            r.getChildren().add(d);
+            r.getChildren().add(l);
+            System.out.println(td.getEditor().getText());
+            if (Objects.equals(td.getEditor().getText(), "Sara"
+                    ) || Objects.equals(td.getEditor().getText(), "Zsofi"
+            )  || Objects.equals(td.getEditor().getText(), "Balazs"
+            )) {
+                logic.getMap().getPlayer().setFly();
+            }
+
+            System.out.println(logic.getMap().getPlayer().canFly());
+            Scene sc = new Scene(r, 500, 300);
+            mainStage.setScene(sc);
         }
 
-        refresh();
-        logic.getMap().moveMonsters();
+        for (KeyHandler keyHandler : keyHandlers) {
+            keyHandler.perform(keyEvent, logic.getMap(), context);
+            refresh();
+            logic.getMap().moveMonsters();
+        }
     }
 
     public void refresh() {
@@ -80,6 +122,7 @@ public class UI {
         }
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setFlowerValueText(logic.getFlowersFromPlayer());
+
     }
 
     private void handleItemPickUp(Cell cell) {

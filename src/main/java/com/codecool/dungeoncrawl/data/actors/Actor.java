@@ -31,7 +31,8 @@ public abstract class Actor implements Drawable {
         return (nextCell.getTileName().equals(CellType.FLOOR.getTileName()) ||
                 nextCell.getTileName().equals(CellType.BRIDGE.getTileName()))
                 && nextCell.getActor() == null
-                || nextCell.getTileName().equals("openedDoor");
+                || nextCell.getTileName().equals("openedDoor")
+                ;
     }
 
     public int getHealth() {

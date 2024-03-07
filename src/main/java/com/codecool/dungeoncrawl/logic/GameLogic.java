@@ -57,7 +57,7 @@ public class GameLogic {
                 if (flowerNumber <= 0 && !monster.hasFlower()) {
                     map.getPlayer().takeDamage(2);
                 } else if (flowerNumber > 0 && !monster.hasFlower()) {
-                    monster.giveFlower(true);
+                    monster.giveFlowerAndTransform();
                     map.getPlayer().removeFlower();
                 }
             }

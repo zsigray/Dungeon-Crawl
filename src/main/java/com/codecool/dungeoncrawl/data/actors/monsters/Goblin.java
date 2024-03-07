@@ -20,7 +20,7 @@ public class Goblin extends Actor implements Monster {
     }
 
     public void followPlayer(Cell targetCell) {
-        Cell nextCell = getClosestCell(cell.getNeighboringCells(), targetCell);
+        Cell nextCell = getClosestCell(cell.getAllNeighboringCells(), targetCell);
         this.moveToNextCell(nextCell);
     }
 

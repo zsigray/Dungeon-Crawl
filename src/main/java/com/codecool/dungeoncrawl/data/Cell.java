@@ -42,7 +42,7 @@ public class Cell implements Drawable {
         return gameMap.getCell(x + dx, y + dy);
     }
 
-    public List<Cell> getNeighboringCells() {
+    public List<Cell> getAllNeighboringCells() {
         List<Cell> neighbors = new ArrayList<>();
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -51,6 +51,15 @@ public class Cell implements Drawable {
             }
         }
         return neighbors;
+    }
+
+    public List<Cell> getNonDiagonalNeighboringCells() {
+        return List.of(
+                getNeighbor(0,1),
+                getNeighbor(0,-1),
+                getNeighbor(1,0),
+                getNeighbor(-1,0)
+        );
     }
 
     @Override

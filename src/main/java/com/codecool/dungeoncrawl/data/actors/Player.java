@@ -35,7 +35,6 @@ public class Player extends Actor {
         return key;
     }
 
-
     @Override
     public boolean moveIsPossible(Cell nextCell) {
         return super.moveIsPossible(nextCell)

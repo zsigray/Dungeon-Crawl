@@ -3,10 +3,10 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
-import com.codecool.dungeoncrawl.data.actors.Goblin;
+import com.codecool.dungeoncrawl.data.actors.monsters.Goblin;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.Skeleton;
-import com.codecool.dungeoncrawl.data.actors.Spider;
+import com.codecool.dungeoncrawl.data.actors.monsters.Skeleton;
+import com.codecool.dungeoncrawl.data.actors.monsters.Spider;
 import com.codecool.dungeoncrawl.data.items.Flower;
 import com.codecool.dungeoncrawl.data.items.FlowerType;
 import com.codecool.dungeoncrawl.data.items.Key;
@@ -32,6 +32,12 @@ public class MapLoader {
                     switch (line.charAt(x)) {
                         case ' ':
                             cell.setType(CellType.EMPTY);
+                            break;
+                        case 'b':
+                            cell.setType(CellType.BRIDGE);
+                            break;
+                        case 'r':
+                            cell.setType(CellType.RIVER);
                             break;
                         case '#':
                             cell.setType(CellType.WALL);

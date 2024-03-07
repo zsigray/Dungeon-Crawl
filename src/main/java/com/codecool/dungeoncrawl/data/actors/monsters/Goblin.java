@@ -1,8 +1,14 @@
-package com.codecool.dungeoncrawl.data.actors;
+package com.codecool.dungeoncrawl.data.actors.monsters;
+
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.Actor;
+
 import java.util.List;
 
-public class Goblin extends Actor {
+public class Goblin extends Actor implements Monster {
+
+    private boolean flower = false;
+    private String tileName = "goblin";
 
     public Goblin(Cell cell) {
         super(cell);
@@ -10,7 +16,7 @@ public class Goblin extends Actor {
 
     @Override
     public String getTileName() {
-        return "goblin";
+        return tileName;
     }
 
     public void followPlayer(Cell targetCell) {
@@ -44,5 +50,15 @@ public class Goblin extends Actor {
         this.move(xMoveUnit, yMoveUnit);
     }
 
+    @Override
+    public boolean hasFlower() {
+        return flower;
+    }
+
+    @Override
+    public void giveFlowerAndTransform() {
+        this.flower = true;
+        this.tileName = "fairy3";
+    }
 
 }

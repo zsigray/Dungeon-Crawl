@@ -1,14 +1,11 @@
 package com.codecool.dungeoncrawl.data;
 
-import com.codecool.dungeoncrawl.data.actors.Actor;
-import com.codecool.dungeoncrawl.data.actors.Goblin;
+import com.codecool.dungeoncrawl.data.actors.monsters.Goblin;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.Spider;
+import com.codecool.dungeoncrawl.data.actors.monsters.Spider;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class GameMap {
     private int width;

@@ -48,7 +48,7 @@ public class GameLogic {
     }
 
     public void handleCombat(Cell playerCell) {
-        for (Cell neighborCell : playerCell.getNeighboringCells()) {
+        for (Cell neighborCell : playerCell.getNonDiagonalNeighboringCells()) {
             if (neighborCell.getActor() != null) {
                 Actor neighborActor = neighborCell.getActor();
                 Monster monster = (Monster) neighborActor;

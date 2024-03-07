@@ -28,7 +28,8 @@ public abstract class Actor implements Drawable {
     }
 
     public boolean moveIsPossible(Cell nextCell) {
-        return nextCell.getTileName().equals(CellType.FLOOR.getTileName())
+        return (nextCell.getTileName().equals(CellType.FLOOR.getTileName()) ||
+                nextCell.getTileName().equals(CellType.BRIDGE.getTileName()))
                 && nextCell.getActor() == null
                 || nextCell.getTileName().equals("openedDoor");
     }

@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
+import com.codecool.dungeoncrawl.data.GameMap;
 
 public class Player extends Actor {
 
@@ -11,6 +12,10 @@ public class Player extends Actor {
 
     public Player(Cell cell) {
         super(cell);
+    }
+
+    public void setCell(GameMap map, int x, int y){
+        this.cell = new Cell(map, 0, 0, CellType.FLOOR);
     }
 
     public String getTileName() {

@@ -6,7 +6,7 @@ import com.codecool.dungeoncrawl.data.actors.*;
 import com.codecool.dungeoncrawl.data.actors.monsters.Monster;
 
 public class GameLogic {
-    private GameMap map;
+    private final GameMap map;
 
     public GameLogic() {
         this.map = MapLoader.loadMap();
@@ -56,11 +56,21 @@ public class GameLogic {
                 int flowerNumber = player.getFlowers();
                 if (flowerNumber <= 0 && !monster.hasFlower()) {
                     player.takeDamage(2);
+                    if (isGameOver()) {
+                        this.map.rewriteCells("/game-over-map.txt");
+                    }
                 } else if (flowerNumber > 0 && !monster.hasFlower()) {
                     monster.giveFlowerAndTransform();
                     player.removeFlower();
+                    if (map.areAllMonstersGood()) {
+                        this.map.rewriteCells("/you-win-map.txt");
+                    }
                 }
             }
         }
     }
+    public boolean isGameOver() {
+        return map.getPlayer().getHealth() <= 0;
+    }
+
 }

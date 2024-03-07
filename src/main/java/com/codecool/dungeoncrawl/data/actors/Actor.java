@@ -4,7 +4,6 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
 
-import java.util.Objects;
 
 public abstract class Actor implements Drawable {
     protected Cell cell;

@@ -25,11 +25,13 @@ public class Goblin extends Actor implements Monster {
     }
 
     private int getDistance(Cell cellA, Cell cellB) {
+        int orthogonalDistance = 10;
+        int diagonalDistance = 14;
         int dstX = Math.abs(cellA.getX() - cellB.getX());
         int dstY = Math.abs(cellA.getY() - cellB.getY());
         if (dstX > dstY)
-            return 14 * dstY + 10 * (dstX - dstY);
-        return 14 * dstX + 10 * (dstY - dstX);
+            return diagonalDistance * dstY + orthogonalDistance * (dstX - dstY);
+        return diagonalDistance * dstX + orthogonalDistance * (dstY - dstX);
     }
 
     private Cell getClosestCell(List<Cell> neighboringCells, Cell targetCell) {

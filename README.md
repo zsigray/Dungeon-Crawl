@@ -1,6 +1,8 @@
 
 # ⚔️ Dungeon Crawl - A JAVA Game ⚔️
 
+✨ In this project, we had to design and implement a **Roguelike** game in Java language.
+
 **The Team behind this game:**
 
 👩‍💻 Sára (***@soosdsara***) <br>
@@ -30,7 +32,7 @@ Starter code including *JavaFX toolkit* was provided by @Codecool.
 
 ℹ️ You can navigate through the map with your arrow keys! <br>
 ℹ️ You can monitor your health and the number of flowers in your hand on the side panel <br>
-ℹ️ Skeletons will not move, spiders move randomly, but beware of Goblins (evil Mike Wazowski) as they will follow you!
+ℹ️ Skeletons will not move, spiders move randomly, but beware of Goblins (evil Mike Wazowski) as they will follow you! <br>
 ℹ️ You have to collect a key to move through the closed door!
 
 ## What were we learning?

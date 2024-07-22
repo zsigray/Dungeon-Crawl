@@ -13,13 +13,6 @@
 
 Starter code including *JavaFX toolkit* was provided by @Codecool. 
 
-### How to play
-
-0. ❗Make sure you can run a .java file on your machine!
-1. ⬇️Download this repository
-2. ▶️Run the **\src\main\java\com\codecool\dungeoncrawl\App.java** file
-3. 🌻Play the day away!
-
 ### Game Rules
 
 😁 The goal of the game is making friends with all enemies <br>
